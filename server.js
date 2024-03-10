@@ -17,7 +17,7 @@ const menuroutes = require('./routes/menuroutes');
 app.use('/person',personroutes);
 app.use('/menu',menuroutes);
 
-dbconnect();
+//dbconnect();
 
 app.listen(PORT,()=>{
     console.log(`Server started at port no ${PORT}`);
