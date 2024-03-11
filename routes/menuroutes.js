@@ -43,7 +43,10 @@ router.get('/:taste',async(req,res)=>{
         
     }
     catch(error){
-
+        console.log(error);
+        res.status(500).json({
+            error: "internal sever error in data fetching"
+        })
     }
 });
 //comment added here

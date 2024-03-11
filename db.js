@@ -1,27 +1,23 @@
 
 const mongoose = require('mongoose');
-require('dotenv').config();
+require("dotenv").config();
 //const mongoURL = process.env.MONGODB_URL_LOCAL
 const mongoURL  = process.env.MONGODB_URL
 
-mongoose.connect(mongoURL)
+const DBConnection = () => {
+    mongoose.connect(mongoURL,{
+    })
+    .then(()=>{
+        console.log("Database connection successfull");
+    })
+    .catch((error)=>{
+        console.log("Issue in database connection");
+        console.log(error.message);
+        process.exit(1);
+    });
+}
 
-const db= mongoose.connection;
-
-db.on('connected',()=>{
-    console.log('connected to mongodb server......');
-})
-
-db.on('error',(err)=>{
-    console.log('mongodb connection error',err);
-})
-
-db.on('disconnected',()=>{
-    console.log('mongodb disconnected');
-})
-
-module.exports = db;
-
+module.exports = DBConnection;
 
 
 
